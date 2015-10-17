@@ -1,0 +1,6 @@
+name: ASkyBlockLevel
+main: com.wasteofplastic.askyblocklevel.ASkyBlockLevel
+version: 0.0.1
+description: Changes perms when level changes
+author: tastybento
+depends: [ASkyBlock, Vault]
