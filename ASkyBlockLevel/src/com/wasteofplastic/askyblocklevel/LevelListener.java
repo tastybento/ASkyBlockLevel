@@ -42,9 +42,11 @@ public class LevelListener implements Listener {
 	    }
 	}
 	//plugin.getLogger().info("Adding new perm " + "island.level." + event.getLevel());
-	// Add new permission
-	VaultHelper.addPerm(player, "island.level." + event.getLevel());
-   }
+	// Add new permissions
+	for (int i = 1; i <= event.getLevel(); i++) {
+	    VaultHelper.addPerm(player, "island.level." + i);
+	}
+    }
 
 
 }
