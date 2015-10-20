@@ -1,2 +1,10 @@
+# The name of the perm to give
+permname: island.level
+# Give players all the levels or just the max level
+# E.g., if player is island level 4, they will get island.level.1, island.level.2,
+# island.level.3 and island.level.4.
+# If this is false, then they will just get the max level
+giveallperms: true
+
 
    

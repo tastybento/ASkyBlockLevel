@@ -8,6 +8,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.permissions.PermissionAttachmentInfo;
 
+import com.wasteofplastic.askyblock.ASkyBlock;
 import com.wasteofplastic.askyblock.events.IslandLevelEvent;
 
 public class LevelListener implements Listener {
@@ -36,15 +37,20 @@ public class LevelListener implements Listener {
 	Iterator<PermissionAttachmentInfo> it = player.getEffectivePermissions().iterator();
 	while (it.hasNext()) {
 	    PermissionAttachmentInfo perm = it.next();
-	    if (perm.getPermission().startsWith("island.level")) {
+	    if (perm.getPermission().startsWith(plugin.getPermName())) {
 		//plugin.getLogger().info("Removing old perm " + perm.getPermission());
 		VaultHelper.removePerm(player, perm.getPermission());
 	    }
 	}
-	//plugin.getLogger().info("Adding new perm " + "island.level." + event.getLevel());
-	// Add new permissions
-	for (int i = 1; i <= event.getLevel(); i++) {
-	    VaultHelper.addPerm(player, "island.level." + i);
+	if (plugin.isGiveAllPerms()) {
+	    // Add new permissions
+	    for (int i = 1; i <= event.getLevel(); i++) {
+		//plugin.getLogger().info("Adding new perm " + plugin.getPermName() + "." + i);
+		VaultHelper.addPerm(player, plugin.getPermName() + "." + i);
+	    }
+	} else {
+	    //plugin.getLogger().info("Adding new perm " + plugin.getPermName() + "." + event.getLevel());
+	    VaultHelper.addPerm(player, plugin.getPermName() + "." + event.getLevel());
 	}
     }
 

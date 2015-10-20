@@ -77,9 +77,9 @@ public class VaultHelper {
      * @param perm
      */
     public static void addPerm(final Player player, final String perm) {
-	permission.playerAdd(player, perm);
+	permission.playerAdd(null, player, perm);
     }
-
+    
     /**
      * Removes a player's permission
      * 
